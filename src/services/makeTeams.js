@@ -46,13 +46,17 @@ export default function makeTeams(someArray, numberMembers) {
     //
     const giveMe = (currentEnemy) => randomTeam.includes(currentEnemy.name);
     while (
-      randomTeam.length === numberMembers || // if the team is full
-      (randomPerson.enemies.some(
+      randomTeam.length >= numberMembers || // if the team is full
+      randomPerson.enemies.some(
         // true if enemy exists in the randomTeam
         giveMe
-      ) &&
-        notVisitedTeams.length !== 0) // we haven't visited all the teams
+      )
     ) {
+      if (notVisitedTeams.length === 0) {
+        break;
+      }
+
+      // we haven't visited all the teams
       //FIND ANOTHER FUCKING TEAM YOU BUM
       // incorrect team --- pick another team to place this person in
       //

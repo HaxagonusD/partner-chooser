@@ -10,8 +10,9 @@ function App() {
   const [people, setPeople] = useState([]);
 
   const parseCsv = (csv) => {
-    const csvArray = csv.split(",");
-    console.log(csvArray);
+    let csvArray = csv.split(",");
+    csvArray = csvArray[0] === "" ? [] : csvArray;
+
     return csvArray.map((currentName) => currentName.trim());
   };
 
