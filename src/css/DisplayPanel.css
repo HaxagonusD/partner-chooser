@@ -1,0 +1,16 @@
+.display-panel {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	border-left: 2px solid black;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+}
+
+@media only screen and (max-width: 1300px) {
+	.display-panel {
+		width: 100%;
+	}
+}
