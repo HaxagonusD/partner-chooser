@@ -1,7 +1,7 @@
 export default function TeamMate(props) {
 	return (
 		<div className="teammates">
-			<p>{props.name}</p>
+			<li>{props.name}</li>
 		</div>
 	);
 }

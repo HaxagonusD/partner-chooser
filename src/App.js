@@ -31,10 +31,7 @@ function App() {
 			</div>
 			<div className="display-panel">
 				<Header name={"Your generated team:"} />
-				<TeamMate name={"Bob"} />
-				<TeamMate name={"Ayman"} />
-				<TeamMate name={"David"} />
-				<TeamMate name={"Shafee"} />
+				<ul>{/* MAP TEAMMATES HERE */}</ul>
 			</div>
 		</div>
 	);
