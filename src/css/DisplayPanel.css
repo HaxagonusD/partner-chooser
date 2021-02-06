@@ -9,6 +9,11 @@
 	justify-content: center;
 }
 
+.display-panel .teammates {
+	font-size: 0.8em;
+	color: rgb(100, 4, 104);
+}
+
 @media only screen and (max-width: 1300px) {
 	.display-panel {
 		width: 100%;
