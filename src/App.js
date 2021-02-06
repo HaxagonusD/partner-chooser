@@ -29,7 +29,7 @@ function App() {
         placeholder="Number of team members per group"
         onChange={(event) => setCurrentEnemies(event.target.value)}
       />
-      <button onClick={addPerson}>Make Teams</button>
+      <button onClick={addPerson}>Add person</button>
     </div>
   );
 }
