@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import "./css/InputPanel.css";
 import "./css/DisplayPanel.css";
+import TeamMate from "./components/TeamMate";
 
 function App() {
 	const [currentName, setCurrentName] = useState("");
@@ -24,12 +25,16 @@ function App() {
 			<div className="input-panel">
 				<Header name={"Team Me"} />
 				<input placeholder="Name" />
-				<input type="textarea" placeholder="No-no's" onChange={(event) => setCurrentName(event.target.value)} />
+				<input type="textarea" placeholder="Seperate name by commas" onChange={(event) => setCurrentName(event.target.value)} />
 				<input type="number" placeholder="Number of team members per group" onChange={(event) => setCurrentEnemies(event.target.value)} />
 				<button onClick={addPerson}>Add person</button>
 			</div>
 			<div className="display-panel">
 				<Header name={"Your generated team:"} />
+				<TeamMate name={"Bob"} />
+				<TeamMate name={"Ayman"} />
+				<TeamMate name={"David"} />
+				<TeamMate name={"Shafee"} />
 			</div>
 		</div>
 	);
