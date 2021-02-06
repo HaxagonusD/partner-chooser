@@ -4,3 +4,8 @@
 	display: flex;
 	flex-wrap: wrap;
 }
+
+.add-person {
+	display: flex;
+	margin: 0 1em;
+}

@@ -5,7 +5,7 @@
 	display: flex;
 	flex-direction: column;
 	text-align: left;
-	border-right: 2px solid black;
+	border-right: 2px solid rgb(144, 33, 148);
 	height: 100vh;
 	align-items: center;
 	background: rgb(238, 178, 240);
@@ -14,13 +14,13 @@
 
 .input-panel input,
 .input-panel button {
-	width: 40%;
+	width: 50%;
 	margin: 1em;
 	font-family: "IBM Plex Sans", sans-serif;
 }
 
 .input-panel input {
-	padding: 0.5em 1em;
+	padding: 0.5em;
 	text-align: left;
 	outline: none;
 	border: none;

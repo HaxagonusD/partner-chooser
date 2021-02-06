@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap");
 
 h1 {
-	font-family: "Poiret One", cursive;
+	font-family: "IBM Plex Sans", sans-serif;
 	letter-spacing: 10px;
 }

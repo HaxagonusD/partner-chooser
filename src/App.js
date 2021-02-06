@@ -24,10 +24,13 @@ function App() {
 		<div className="App">
 			<div className="input-panel">
 				<Header name={"Team Me"} />
-				<input placeholder="Name" />
+				<div className="add-person">
+					<input placeholder="Name" />
+					<button onClick={addPerson}>Add person</button>
+				</div>
 				<input type="textarea" placeholder="Seperate name by commas" onChange={(event) => setCurrentName(event.target.value)} />
 				<input type="number" placeholder="Number of team members per group" onChange={(event) => setCurrentEnemies(event.target.value)} />
-				<button onClick={addPerson}>Add person</button>
+				<button>Generate Team</button>
 			</div>
 			<div className="display-panel">
 				<Header name={"Your generated team:"} />
