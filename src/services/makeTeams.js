@@ -5,7 +5,7 @@ export default function makeTeams(peopleArray, maxMembersPerGroup) {
   const someArray = [...peopleArray];
   const numberOfTeams = Math.ceil(someArray.length / maxMembersPerGroup);
 
-  const teams = [];
+  const teams = []; // [[][][][][][][][][]]
 
   for (let i = 0; i < numberOfTeams; i++) {
     const newArray = [];
@@ -35,7 +35,8 @@ export default function makeTeams(peopleArray, maxMembersPerGroup) {
       currentPerson.enemies.some(condition)
     );
 
-    console.log(randomTeam);
+    // randomTeam holds a good team or we have sisted every team and we need to make a new one
+    console.log("randomTeam", randomTeam);
     if (notVisitedTeams.length === 0) {
       teams.push([currentPerson]);
     } else {
