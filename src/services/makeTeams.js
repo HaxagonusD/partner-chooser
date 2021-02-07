@@ -19,7 +19,8 @@ export default function makeTeams(peopleArray, maxMembersPerGroup) {
     var notVisitedTeams = [...Array(teams.length).keys()];
 
     let randomTeam;
-    const condition = (currentEnemy) => randomTeam.includes(currentEnemy.name);
+    const condition = (currentTeamMate) =>
+      currentPerson.enemies.includes(currentTeamMate.name);
 
     let placeOfVisitedTeam;
     do {
@@ -32,16 +33,13 @@ export default function makeTeams(peopleArray, maxMembersPerGroup) {
       notVisitedTeams.splice(placeOfVisitedTeam, 1);
     } while (
       randomTeam.length >= maxMembersPerGroup ||
-      currentPerson.enemies.some(condition)
+      randomTeam.some(condition)
     );
 
     // randomTeam holds a good team or we have sisted every team and we need to make a new one
     console.log("randomTeam", randomTeam);
-    if (notVisitedTeams.length === 0) {
-      teams.push([currentPerson]);
-    } else {
-      randomTeam.push(currentPerson);
-    }
+    randomTeam.push(currentPerson);
   }
+
   return teams;
 }
