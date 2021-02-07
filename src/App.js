@@ -1,43 +1,62 @@
 import "./App.css";
 import Person from "./services/Person";
 import { useState } from "react";
-import Header from "./components/Header";
-import "./css/InputPanel.css";
-import "./css/DisplayPanel.css";
-import TeamMate from "./components/TeamMate";
+
+import makeTeams from "./services/makeTeams";
 
 function App() {
-	const [currentName, setCurrentName] = useState("");
-	const [currentEnemies, setCurrentEnemies] = useState("");
-	const [people, setPeople] = useState([]);
+  const [currentName, setCurrentName] = useState("");
+  const [currentEnemies, setCurrentEnemies] = useState("");
+  const [number, setNumber] = useState(1);
+  const [people, setPeople] = useState([]);
 
-	const parseCsv = (csv) => {
-		const csvArray = csv.split(",");
-		return csvArray.map((currentName) => currentName.trim());
-	};
+  const parseCsv = (csv) => {
+    let csvArray = csv.split(",");
+    csvArray = csvArray[0] === "" && csvArray.length === 1 ? [] : csvArray;
+    return csvArray.map((currentName) => currentName.trim());
+  };
 
-	const addPerson = () => {
-		setPeople([...people, new Person(currentName, currentEnemies)]);
-	};
+  const addPerson = () => {
+    const thePerson = new Person(currentName, parseCsv(currentEnemies));
+    console.log(thePerson);
+    setPeople([...people, thePerson]);
+  };
 
-	return (
-		<div className="App">
-			<div className="input-panel">
-				<Header name={"Team Me"} />
-				<div className="add-person">
-					<input placeholder="Name" />
-					<button onClick={addPerson}>Add person</button>
-				</div>
-				<input type="textarea" placeholder="Seperate name by commas" onChange={(event) => setCurrentName(event.target.value)} />
-				<input type="number" placeholder="Number of team members per group" onChange={(event) => setCurrentEnemies(event.target.value)} />
-				<button>Generate Team</button>
-			</div>
-			<div className="display-panel">
-				<Header name={"Your generated team:"} />
-				<ul>{/* MAP TEAMMATES HERE */}</ul>
-			</div>
-		</div>
-	);
+  const handleMakeTeams = () => {
+    console.log(makeTeams(people, number));
+  };
+
+  return (
+    <div className="App">
+      <input
+        placeholder="Name"
+        onChange={(event) => setCurrentName(event.target.value)}
+      />
+      <input
+        type="textarea"
+        placeholder="Enemies"
+        onChange={(event) => setCurrentEnemies(event.target.value)}
+      />
+      <input
+        type="number"
+        placeholder="Number of team members per group"
+        onChange={(event) => setNumber(event.target.value)}
+      />
+      <button onClick={addPerson}>Add person</button>
+      <button onClick={handleMakeTeams}>Make teams</button>
+    </div>
+  );
 }
 
 export default App;
+
+//Person
+//has name
+//has list of pople that they don't want to work with
+//
+//Randomly partners people into groups
+//
+//
+//
+//
+//
