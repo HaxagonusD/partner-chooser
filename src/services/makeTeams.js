@@ -1,90 +1,46 @@
 // given and array of people and how many memeber per team
 // make random teams with people that like each other
 // return an array with all the teams
-export default function makeTeams(someArray, numberMembers) {
-  const peopleArray = [...someArray];
-  // [[] [] [] [enemy] [enemy] ] peopleArray.length  / numberMembers rounded up
-  //
-  //pick a random person in the people array
-  // choose a random place to put them in
-  //
-  // check to if any other enemies are here
-  // if not pick another that's not one that we've seen
-  // if we have seen all arrays make a new array with that person in it
+export default function makeTeams(peopleArray, maxMembersPerGroup) {
+  const someArray = [...peopleArray];
+  const numberOfTeams = Math.ceil(someArray.length / maxMembersPerGroup);
 
-  const howManyTeams = Math.ceil(peopleArray.length / numberMembers);
-  console.log(howManyTeams);
+  const teams = [];
 
-  let teams = [];
-  for (let i = 0; i < howManyTeams; i++) {
-    teams.push([]);
+  for (let i = 0; i < numberOfTeams; i++) {
+    const newArray = [];
+    teams.push(newArray);
   }
-  console.log("teams", teams);
-  let passes = 0;
 
-  while (peopleArray.length !== 0) {
-    let notVisitedTeams = [...Array(teams.length).keys()];
-    let randomTeamIndex = Math.floor(Math.random() * notVisitedTeams.length);
-    let randomPersonIndex = Math.floor(Math.random() * peopleArray.length);
-    let randomTeam = teams[randomTeamIndex];
-    let randomPerson = peopleArray[randomPersonIndex];
-    console.log(passes++);
-    console.log("RandomPersonIndex", randomPersonIndex);
-    console.log("RandomTeamIndex", randomTeamIndex);
-    console.log("RandomPerson", randomPerson);
-    console.log("randomTeam", randomTeam);
+  for (let i = 0; i < someArray.length; i++) {
+    const currentPerson = someArray[i];
+    console.log("loopbegings");
+    console.log("teams", teams);
+    var notVisitedTeams = [...Array(teams.length).keys()];
 
-    notVisitedTeams.splice(randomTeamIndex, 1);
+    let randomTeam;
+    const condition = (currentEnemy) => randomTeam.includes(currentEnemy.name);
 
-    console.log("notVisitedTeams", notVisitedTeams);
-    //find a good team
-    //
-    //[1 ,3]
-    //
-    //array = [2,4,5,6,7,8,9,10]
-    //array[randomIndex]
-    //
-    const giveMe = (currentEnemy) => randomTeam.includes(currentEnemy.name);
-    while (
-      randomTeam.length >= numberMembers || // if the team is full
-      randomPerson.enemies.some(
-        // true if enemy exists in the randomTeam
-        giveMe
-      )
-    ) {
+    let placeOfVisitedTeam;
+    do {
+      console.log("notVisitedTeams", notVisitedTeams);
       if (notVisitedTeams.length === 0) {
         break;
       }
+      placeOfVisitedTeam = Math.floor(Math.random() * notVisitedTeams.length);
+      randomTeam = teams[notVisitedTeams[placeOfVisitedTeam]];
+      notVisitedTeams.splice(placeOfVisitedTeam, 1);
+    } while (
+      randomTeam.length >= maxMembersPerGroup ||
+      currentPerson.enemies.some(condition)
+    );
 
-      // we haven't visited all the teams
-      //FIND ANOTHER FUCKING TEAM YOU BUM
-      // incorrect team --- pick another team to place this person in
-      //
-      // notVisitedTeams = [4,13]             *
-      // teams = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
-      let notVisitedNewIndex = Math.floor(
-        Math.random() * notVisitedTeams.length
-      );
-      randomTeamIndex = notVisitedTeams[notVisitedNewIndex];
-
-      notVisitedTeams.splice(notVisitedNewIndex, 1);
-      randomTeam = teams[randomTeamIndex];
-    }
-
-    //after we get out this loop we have a good team to put this person in
-
-    if (notVisitedTeams.length !== 0) {
-      randomTeam.push(randomPerson);
+    console.log(randomTeam);
+    if (notVisitedTeams.length === 0) {
+      teams.push([currentPerson]);
     } else {
-      teams.push([randomPerson]);
+      randomTeam.push(currentPerson);
     }
-    //
-    //
-
-    notVisitedTeams = [...Array(teams.length).keys()];
-    notVisitedTeams.splice(randomTeamIndex, 1);
-    peopleArray.splice(randomPersonIndex, 1);
   }
-
   return teams;
 }

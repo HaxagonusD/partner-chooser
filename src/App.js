@@ -11,8 +11,7 @@ function App() {
 
   const parseCsv = (csv) => {
     let csvArray = csv.split(",");
-    csvArray = csvArray[0] === "" ? [] : csvArray;
-
+    csvArray = csvArray[0] === "" && csvArray.length === 1 ? [] : csvArray;
     return csvArray.map((currentName) => currentName.trim());
   };
 
