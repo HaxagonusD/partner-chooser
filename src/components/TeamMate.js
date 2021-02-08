@@ -1,7 +1,3 @@
-export default function TeamMate(props) {
-	return (
-		<div className="teammates">
-			<li>{props.name}</li>
-		</div>
-	);
+export default function TeamMate({ person }) {
+  return <div className="teammates">{person.name}</div>;
 }
