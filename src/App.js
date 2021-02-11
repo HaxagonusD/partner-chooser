@@ -38,20 +38,20 @@ function App() {
 	return (
 		<div>
 			<Nav />
-			<div className="flex justify-evenly h-screen bg-red p-5 w-full xl:flex-row md:flex-col sm:flex-col xs:flex-col w-1/2">
+			<div className="flex flex-wrap justify-evenly h-full bg-red p-5 w-full xl:flex-row md:flex-col sm:flex-col xs:flex-col">
 				<div className="border-b-2">
 					<div className="px-2">
 						<Header name={"Teamify"} />
 						<Instructions />
 						<div className="py-10">
 							<input
-								className="border border-2 rounded-r px-4 py-2"
+								className="border-2 rounded-r px-4 py-2"
 								placeholder="Name"
 								value={currentName}
 								onChange={(event) => setCurrentName(event.target.value)}
 							/>
 							<input
-								className="border border-2 rounded-r px-4 py-2"
+								className="border-2 rounded-r px-4 py-2"
 								type="textarea"
 								value={currentEnemies}
 								placeholder="Opposition"
